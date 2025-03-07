@@ -31,9 +31,14 @@ class ForgotPasswordSerializer(serializers.Serializer):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         reset_link = f"http://localhost:8000/api/auth/reset-password/{uid}/{token}/"
 
-        # Mock email backend (print instead of sending)
-        print(f"Password reset link: {reset_link}")
-
+        send_mail(
+            subject="Password Reset Request",
+            message=f"Click the link to reset your password: {reset_link}",
+            from_email="noreply@example.com",
+            recipient_list=[email],
+            fail_silently=False,
+        )
+        
         return data
 
 

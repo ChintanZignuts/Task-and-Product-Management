@@ -32,7 +32,7 @@ class ForgotPasswordView(generics.GenericAPIView):
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        return Response({"message": "Password reset email sent (mocked)."}, status=status.HTTP_200_OK)
+        return Response({"message": "Password reset email sent."}, status=status.HTTP_200_OK)
 
 class ResetPasswordView(generics.GenericAPIView):
     def post(self, request, uidb64, token):
