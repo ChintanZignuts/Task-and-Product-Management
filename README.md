@@ -100,6 +100,34 @@ To ensure everything is working correctly, run:
 python manage.py test
 ```
 
+## Running Tests with Coverage
+
+To ensure your code is well-tested, you can check the test coverage using `coverage.py`. Follow these steps:
+
+### 1. Install Coverage
+
+If you haven't installed `coverage`, install it using pip:
+
+```bash
+pip install coverage
+```
+
+### 2. Run Tests with Coverage
+
+To measure test coverage, run:
+
+```bash
+coverage run --source=task_product_manager manage.py test
+```
+
+### 3. Generate Coverage Report
+
+After running the tests, generate a coverage report:
+
+```bash
+coverage report
+```
+
 ## 📌 API Endpoints
 
 ### **Authentication**
@@ -171,3 +199,7 @@ For full API documentation, visit `http://127.0.0.1:8000/api/swagger/` (once the
 ## 📜 License
 
 This project is open-source and available under the [MIT License](LICENSE).
+
+```
+
+```
