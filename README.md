@@ -145,7 +145,13 @@ python manage.py test
 | DELETE | `/api/products/{id}/delete/`  | Soft delete a product          |
 | POST   | `/api/products/{id}/restore/` | Restore a soft-deleted product |
 
-For full API documentation, visit `http://127.0.0.1:8000/swagger/` (once the server is running).
+For full API documentation, visit `http://127.0.0.1:8000/api/swagger/` (once the server is running).
+
+| Documentation                   | URL                                |
+| ------------------------------- | ---------------------------------- |
+| Swagger UI (Interactive API)    | http://127.0.0.1:8000/api/swagger/ |
+| ReDoc UI (Alternative API Docs) | http://127.0.0.1:8000/api/redoc/   |
+| OpenAPI Schema (JSON)           | http://127.0.0.1:8000/api/schema/  |
 
 ## 🔗 Contributing
 
