@@ -199,7 +199,3 @@ For full API documentation, visit `http://127.0.0.1:8000/api/swagger/` (once the
 ## 📜 License
 
 This project is open-source and available under the [MIT License](LICENSE).
-
-```
-
-```
