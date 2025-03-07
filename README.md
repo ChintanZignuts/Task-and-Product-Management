@@ -22,7 +22,7 @@ This is a Django Rest Framework (DRF) based Task and Product Management System w
 
 ```bash
 git clone https://github.com/ChintanZignuts/Task-and-Product-Management.git
-cd your-repo-name
+cd Task-and-Product-Management
 ```
 
 ### **2. Create a Virtual Environment**
