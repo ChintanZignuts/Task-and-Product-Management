@@ -56,6 +56,11 @@ DB_PASSWORD=your_db_password
 DB_HOST=localhost
 DB_PORT=5432
 ALLOWED_HOSTS=localhost,127.0.0.1
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = your_mailtrap_user
+EMAIL_HOST_PASSWORD = your_mailtrap_password
+EMAIL_PORT = your_mailtrap_port
 ```
 
 ### **6. Set Up the Database**
