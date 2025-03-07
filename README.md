@@ -78,7 +78,7 @@ python manage.py createsuperuser
 
 Follow the prompt to set up an admin account.
 
-### **9. Run the Development Server**
+### **9. Run the Seeder**
 
 ```bash
 python manage.py seed_admin
