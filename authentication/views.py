@@ -6,7 +6,11 @@ from django.utils.http import urlsafe_base64_decode
 from authentication.serializers import ForgotPasswordSerializer
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenBlacklistView
+from django.http import JsonResponse
 
+
+def health_check(request):
+    return JsonResponse({"status": "ok", "message": "API is running"}, status=200)
 class RegisterUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserRegistrationSerializer
