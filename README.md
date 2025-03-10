@@ -223,14 +223,14 @@ docker-compose up -d
 Run tests inside the Docker container:
 
 ```bash
-docker-compose exec web python manage.py test
+docker-compose exec django_app python manage.py test
 ```
 
 To check test coverage:
 
 ```bash
-docker-compose exec web coverage run --source=task_product_manager manage.py test
-docker-compose exec web coverage report
+docker-compose exec django_app coverage run --source=task_product_manager manage.py test
+docker-compose exec django_app coverage report
 ```
 
 ## 📌 API Endpoints
