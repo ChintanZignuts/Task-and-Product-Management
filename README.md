@@ -50,11 +50,11 @@ Create a `.env` file in the root directory and add the following environment var
 ```ini
 SECRET_KEY=your_secret_key_here
 APP_DEBUG=True
-DB_NAME=your_db_name
-DB_USER=your_db_user
-DB_PASSWORD=your_db_password
-DB_HOST=localhost
-DB_PORT=5432
+APP_DB_NAME=your_db_name
+APP_DB_USER=your_db_user
+APP_DB_PASSWORD=your_db_password
+APP_DB_HOST=localhost
+APP_DB_PORT=5432
 ALLOWED_HOSTS=localhost,127.0.0.1
 
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
@@ -126,6 +126,111 @@ After running the tests, generate a coverage report:
 
 ```bash
 coverage report
+```
+
+## **2. Running with Docker (Recommended)**
+
+This project supports Docker for easier setup and deployment.
+
+#### **2.1 Ensure Docker & Docker Compose are Installed**
+
+Ensure you have Docker and Docker Compose installed:
+
+```bash
+docker --version  # Check Docker version
+docker-compose --version  # Check Docker Compose version
+```
+
+#### **2.2 Create an `.env` File**
+
+Create a `.env` file in the root directory and add the following environment variables:
+
+```ini
+SECRET_KEY=your_secret_key_here
+APP_DEBUG=True
+APP_DB_NAME=task_db
+APP_DB_USER=task_user
+APP_DB_PASSWORD=your_db_password
+APP_DB_HOST=postgres_db
+APP_DB_PORT=5432
+ALLOWED_HOSTS=localhost,127.0.0.1
+
+EMAIL_HOST='sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER=your_mailtrap_user
+EMAIL_HOST_PASSWORD=your_mailtrap_password
+EMAIL_PORT=your_mailtrap_port
+```
+
+#### **2.3 Start the Containers**
+
+Run the following command to build and start the Django and PostgreSQL containers:
+
+```bash
+docker-compose up -d --build
+```
+
+This will:
+
+- Start the PostgreSQL database (`postgres_db` container)
+- Start the Django application (`django_app` container)
+
+#### **2.4 Apply Database Migrations**
+
+Once the containers are up, run the migrations inside the Django container:
+
+```bash
+docker-compose exec django_app python manage.py migrate
+```
+
+#### **2.5 Create a Superuser (Admin Panel Access)**
+
+```bash
+docker-compose exec django_app python manage.py createsuperuser
+```
+
+#### **2.6 Run the Seeder**
+
+```bash
+docker-compose exec django_app python manage.py seed_admin
+```
+
+#### **2.7 Access the Application**
+
+- API Base URL: `http://127.0.0.1:8000/`
+- Admin Panel: `http://127.0.0.1:8000/admin/`
+- Swagger API Docs: `http://127.0.0.1:8000/api/swagger/`
+
+#### **2.8 Stopping the Containers**
+
+To stop the running containers:
+
+```bash
+docker-compose down
+```
+
+#### **2.9 Restarting Containers**
+
+To restart the containers without rebuilding:
+
+```bash
+docker-compose up -d
+```
+
+---
+
+## Running Tests with Docker
+
+Run tests inside the Docker container:
+
+```bash
+docker-compose exec web python manage.py test
+```
+
+To check test coverage:
+
+```bash
+docker-compose exec web coverage run --source=task_product_manager manage.py test
+docker-compose exec web coverage report
 ```
 
 ## 📌 API Endpoints
